@@ -1,0 +1,80 @@
+[
+  {
+    "id": "/api/employees",
+    "javaEntityClass": "com.hr.mis.entity.Employee",
+    "tableName": "employees",
+    "entityFields": {
+      "id": {
+        "columnName": "id",
+        "nullable": false
+      },
+      "firstName": {
+        "columnName": "first_name",
+        "nullable": false,
+        "length": 150
+      },
+      "lastName": {
+        "columnName": "last_name",
+        "nullable": false,
+        "length": 150
+      },
+      "email": {
+        "columnName": "email",
+        "nullable": false,
+        "unique": true,
+        "length": 254
+      },
+      "position": {
+        "columnName": "position",
+        "length": 200
+      },
+      "salary": {
+        "columnName": "salary",
+        "precision": 12,
+        "scale": 2
+      },
+      "hiredDate": {
+        "columnName": "hired_date"
+      }
+    }
+  },
+  {
+    "id": "/api/employees/{id}",
+    "javaEntityClass": "com.hr.mis.entity.Employee",
+    "tableName": "employees",
+    "entityFields": {
+      "id": {
+        "columnName": "id",
+        "nullable": false
+      },
+      "firstName": {
+        "columnName": "first_name",
+        "nullable": false,
+        "length": 150
+      },
+      "lastName": {
+        "columnName": "last_name",
+        "nullable": false,
+        "length": 150
+      },
+      "email": {
+        "columnName": "email",
+        "nullable": false,
+        "unique": true,
+        "length": 254
+      },
+      "position": {
+        "columnName": "position",
+        "length": 200
+      },
+      "salary": {
+        "columnName": "salary",
+        "precision": 12,
+        "scale": 2
+      },
+      "hiredDate": {
+        "columnName": "hired_date"
+      }
+    }
+  }
+]
