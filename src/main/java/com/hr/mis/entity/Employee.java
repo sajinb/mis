@@ -15,8 +15,8 @@ public class Employee {
     private Long id;
 
     @NotBlank
-    @Size(max = 150)
-    @Column(name = "first_name", nullable = false, length = 150)
+    @Size(max = 500)
+    @Column(name = "first_name", nullable = false, length = 500)
     private String firstName;
 
     @NotBlank
