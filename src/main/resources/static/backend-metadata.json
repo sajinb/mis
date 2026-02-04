@@ -4,37 +4,34 @@
     "javaEntityClass": "com.hr.mis.entity.Employee",
     "tableName": "employees",
     "entityFields": {
-      "id": {
-        "columnName": "id",
-        "nullable": false
-      },
+      "id": {},
       "firstName": {
-        "columnName": "first_name",
+        "name": "first_name",
         "nullable": false,
         "length": 150
       },
       "lastName": {
-        "columnName": "last_name",
+        "name": "last_name",
         "nullable": false,
         "length": 150
       },
       "email": {
-        "columnName": "email",
+        "name": "email",
         "nullable": false,
         "unique": true,
         "length": 254
       },
       "position": {
-        "columnName": "position",
+        "name": "position",
         "length": 200
       },
       "salary": {
-        "columnName": "salary",
+        "name": "salary",
         "precision": 12,
         "scale": 2
       },
       "hiredDate": {
-        "columnName": "hired_date"
+        "name": "hired_date"
       }
     }
   },
@@ -43,37 +40,34 @@
     "javaEntityClass": "com.hr.mis.entity.Employee",
     "tableName": "employees",
     "entityFields": {
-      "id": {
-        "columnName": "id",
-        "nullable": false
-      },
+      "id": {},
       "firstName": {
-        "columnName": "first_name",
+        "name": "first_name",
         "nullable": false,
         "length": 150
       },
       "lastName": {
-        "columnName": "last_name",
+        "name": "last_name",
         "nullable": false,
         "length": 150
       },
       "email": {
-        "columnName": "email",
+        "name": "email",
         "nullable": false,
         "unique": true,
         "length": 254
       },
       "position": {
-        "columnName": "position",
+        "name": "position",
         "length": 200
       },
       "salary": {
-        "columnName": "salary",
+        "name": "salary",
         "precision": 12,
         "scale": 2
       },
       "hiredDate": {
-        "columnName": "hired_date"
+        "name": "hired_date"
       }
     }
   }
