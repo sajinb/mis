@@ -5,37 +5,41 @@
     "tableName": "employees",
     "entityFields": {
       "id": {
-        "name": "id"
+        "id": true,
+        "columnName": "id",
+        "generatedValue": {
+          "strategy": "IDENTITY"
+        }
       },
       "firstName": {
-        "name": "first_name",
+        "columnName": "first_name",
         "nullable": false,
         "length": 150
       },
       "lastName": {
-        "name": "last_name",
+        "columnName": "last_name",
         "nullable": false,
         "length": 150
       },
       "email": {
-        "name": "email",
+        "columnName": "email",
         "nullable": false,
         "unique": true,
         "length": 254
       },
       "position": {
-        "name": "position",
+        "columnName": "position",
         "nullable": true,
         "length": 200
       },
       "salary": {
-        "name": "salary",
+        "columnName": "salary",
         "nullable": true,
         "precision": 12,
         "scale": 2
       },
       "hiredDate": {
-        "name": "hired_date",
+        "columnName": "hired_date",
         "nullable": true
       }
     }
@@ -46,37 +50,41 @@
     "tableName": "employees",
     "entityFields": {
       "id": {
-        "name": "id"
+        "id": true,
+        "columnName": "id",
+        "generatedValue": {
+          "strategy": "IDENTITY"
+        }
       },
       "firstName": {
-        "name": "first_name",
+        "columnName": "first_name",
         "nullable": false,
         "length": 150
       },
       "lastName": {
-        "name": "last_name",
+        "columnName": "last_name",
         "nullable": false,
         "length": 150
       },
       "email": {
-        "name": "email",
+        "columnName": "email",
         "nullable": false,
         "unique": true,
         "length": 254
       },
       "position": {
-        "name": "position",
+        "columnName": "position",
         "nullable": true,
         "length": 200
       },
       "salary": {
-        "name": "salary",
+        "columnName": "salary",
         "nullable": true,
         "precision": 12,
         "scale": 2
       },
       "hiredDate": {
-        "name": "hired_date",
+        "columnName": "hired_date",
         "nullable": true
       }
     }
