@@ -1,0 +1,100 @@
+[
+    {
+        "id": "/api/employees",
+        "javaEntityClass": "com.hr.mis.entity.Employee",
+        "tableName": "employees",
+        "entityFields": {
+            "id": {
+                "columnName": "id",
+                "type": "Long",
+                "primaryKey": true,
+                "generated": "IDENTITY",
+                "nullable": false
+            },
+            "firstName": {
+                "columnName": "first_name",
+                "type": "String",
+                "nullable": false,
+                "length": 100
+            },
+            "lastName": {
+                "columnName": "last_name",
+                "type": "String",
+                "nullable": false,
+                "length": 150
+            },
+            "email": {
+                "columnName": "email",
+                "type": "String",
+                "nullable": false,
+                "unique": true
+            },
+            "position": {
+                "columnName": "position",
+                "type": "String",
+                "nullable": true,
+                "length": 200
+            },
+            "salary": {
+                "columnName": "salary",
+                "type": "BigDecimal",
+                "nullable": true,
+                "constraints": "PositiveOrZero"
+            },
+            "hiredDate": {
+                "columnName": "hired_date",
+                "type": "LocalDate",
+                "nullable": true
+            }
+        }
+    },
+    {
+        "id": "/api/employees/{id}",
+        "javaEntityClass": "com.hr.mis.entity.Employee",
+        "tableName": "employees",
+        "entityFields": {
+            "id": {
+                "columnName": "id",
+                "type": "Long",
+                "primaryKey": true,
+                "generated": "IDENTITY",
+                "nullable": false
+            },
+            "firstName": {
+                "columnName": "first_name",
+                "type": "String",
+                "nullable": false,
+                "length": 100
+            },
+            "lastName": {
+                "columnName": "last_name",
+                "type": "String",
+                "nullable": false,
+                "length": 150
+            },
+            "email": {
+                "columnName": "email",
+                "type": "String",
+                "nullable": false,
+                "unique": true
+            },
+            "position": {
+                "columnName": "position",
+                "type": "String",
+                "nullable": true,
+                "length": 200
+            },
+            "salary": {
+                "columnName": "salary",
+                "type": "BigDecimal",
+                "nullable": true,
+                "constraints": "PositiveOrZero"
+            },
+            "hiredDate": {
+                "columnName": "hired_date",
+                "type": "LocalDate",
+                "nullable": true
+            }
+        }
+    }
+]

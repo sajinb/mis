@@ -1,0 +1,200 @@
+{
+  "generatedAt": "2026-02-03T00:00:00Z",
+  "description": "Merged UI forms metadata and backend entity metadata to guide Java changes (recreated to reflect updated UI constraints).",
+  "merged": [
+    {
+      "id": "/api/employees",
+      "httpMethod": "POST",
+      "purpose": "Create Employee",
+      "uiComponent": "src/components/EmployeeForm.jsx",
+      "javaEntityClass": "com.hr.mis.entity.Employee",
+      "tableName": "employees",
+      "formFields": [
+        {
+          "name": "firstName",
+          "uiType": "textField",
+          "required": true,
+          "uiMaxLength": 150,
+          "declaredJavaAnnotations": ["@Column(length = 100)", "@Size(max = 100)"],
+          "javaType": "String",
+          "backend": {
+            "columnName": "first_name",
+            "type": "String",
+            "nullable": false,
+            "length": 100
+          },
+          "mismatch": {
+            "issue": "UI maxLength (150) is greater than backend column length (100)",
+            "recommendation": "Increase @Column(length = 150) and @Size(max = 150) on the Java entity and update DB schema (migration), or reduce UI maxLength to 100 to match backend."
+          }
+        },
+        {
+          "name": "lastName",
+          "uiType": "textField",
+          "required": true,
+          "uiMaxLength": 150,
+          "declaredJavaAnnotations": ["@Column(length = 150)", "@Size(max = 150)"],
+          "javaType": "String",
+          "backend": {
+            "columnName": "last_name",
+            "type": "String",
+            "nullable": false,
+            "length": 150
+          }
+        },
+        {
+          "name": "email",
+          "uiType": "emailField",
+          "required": true,
+          "uiMaxLength": 254,
+          "declaredJavaAnnotations": ["@Column(length = 254)", "@Email"],
+          "javaType": "String",
+          "backend": {
+            "columnName": "email",
+            "type": "String",
+            "nullable": false,
+            "unique": true
+          },
+          "note": "Backend has no explicit length for email; consider adding length = 254 in the entity and DB schema."
+        },
+        {
+          "name": "position",
+          "uiType": "textField",
+          "required": false,
+          "uiMaxLength": 200,
+          "declaredJavaAnnotations": ["@Column(length = 200)", "@Size(max = 200)"],
+          "javaType": "String",
+          "backend": {
+            "columnName": "position",
+            "type": "String",
+            "nullable": true,
+            "length": 200
+          }
+        },
+        {
+          "name": "salary",
+          "uiType": "numberField",
+          "required": false,
+          "declaredJavaAnnotations": ["@Column(precision = 12, scale = 2)"],
+          "javaType": "BigDecimal",
+          "backend": {
+            "columnName": "salary",
+            "type": "BigDecimal",
+            "nullable": true,
+            "constraints": "PositiveOrZero"
+          }
+        },
+        {
+          "name": "hiredDate",
+          "uiType": "datePicker",
+          "required": false,
+          "declaredJavaAnnotations": [],
+          "javaType": "LocalDate",
+          "backend": {
+            "columnName": "hired_date",
+            "type": "LocalDate",
+            "nullable": true
+          }
+        }
+      ],
+      "notes": "UI enforces max lengths (firstName 150, lastName 150, position 200). Backend already matches lastName and position; firstName is a mismatch and email length is not specified in backend."
+    },
+    {
+      "id": "/api/employees/{id}",
+      "httpMethod": "PUT",
+      "purpose": "Update Employee",
+      "uiComponent": "src/components/EmployeeForm.jsx",
+      "javaEntityClass": "com.hr.mis.entity.Employee",
+      "tableName": "employees",
+      "formFields": [
+        {
+          "name": "firstName",
+          "uiType": "textField",
+          "required": true,
+          "uiMaxLength": 150,
+          "declaredJavaAnnotations": ["@Column(length = 100)", "@Size(max = 100)"],
+          "javaType": "String",
+          "backend": {
+            "columnName": "first_name",
+            "type": "String",
+            "nullable": false,
+            "length": 100
+          },
+          "mismatch": {
+            "issue": "UI maxLength (150) is greater than backend column length (100)",
+            "recommendation": "Increase @Column(length = 150) and @Size(max = 150) on the Java entity and update DB schema (migration), or reduce UI maxLength to 100 to match backend."
+          }
+        },
+        {
+          "name": "lastName",
+          "uiType": "textField",
+          "required": true,
+          "uiMaxLength": 150,
+          "declaredJavaAnnotations": ["@Column(length = 150)", "@Size(max = 150)"],
+          "javaType": "String",
+          "backend": {
+            "columnName": "last_name",
+            "type": "String",
+            "nullable": false,
+            "length": 150
+          }
+        },
+        {
+          "name": "email",
+          "uiType": "emailField",
+          "required": true,
+          "uiMaxLength": 254,
+          "declaredJavaAnnotations": ["@Column(length = 254)", "@Email"],
+          "javaType": "String",
+          "backend": {
+            "columnName": "email",
+            "type": "String",
+            "nullable": false,
+            "unique": true
+          },
+          "note": "Backend has no explicit length for email; consider adding length = 254 in the entity and DB schema."
+        },
+        {
+          "name": "position",
+          "uiType": "textField",
+          "required": false,
+          "uiMaxLength": 200,
+          "declaredJavaAnnotations": ["@Column(length = 200)", "@Size(max = 200)"],
+          "javaType": "String",
+          "backend": {
+            "columnName": "position",
+            "type": "String",
+            "nullable": true,
+            "length": 200
+          }
+        },
+        {
+          "name": "salary",
+          "uiType": "numberField",
+          "required": false,
+          "declaredJavaAnnotations": ["@Column(precision = 12, scale = 2)"],
+          "javaType": "BigDecimal",
+          "backend": {
+            "columnName": "salary",
+            "type": "BigDecimal",
+            "nullable": true,
+            "constraints": "PositiveOrZero"
+          }
+        },
+        {
+          "name": "hiredDate",
+          "uiType": "datePicker",
+          "required": false,
+          "declaredJavaAnnotations": [],
+          "javaType": "LocalDate",
+          "backend": {
+            "columnName": "hired_date",
+            "type": "LocalDate",
+            "nullable": true
+          }
+        }
+      ],
+      "notes": "Update uses PUT to `/api/employees/{id}`. Backend metadata aligns for most fields; firstName length mismatch detected."
+    }
+  ]
+}
