@@ -1,6 +1,7 @@
 [
   {
     "id": "/api/employees",
+    "httpMethod": "POST",
     "javaEntityClass": "com.hr.mis.entity.Employee",
     "tableName": "employees",
     "entityFields": {
@@ -37,6 +38,7 @@
   },
   {
     "id": "/api/employees/{id}",
+    "httpMethod": "PUT",
     "javaEntityClass": "com.hr.mis.entity.Employee",
     "tableName": "employees",
     "entityFields": {
@@ -56,6 +58,39 @@
         "nullable": false,
         "length": 254,
         "unique": true
+      },
+      "position": {
+        "name": "position",
+        "length": 200
+      },
+      "salary": {
+        "name": "salary",
+        "precision": 12,
+        "scale": 2
+      },
+      "hiredDate": {
+        "name": "hired_date"
+      }
+    }
+  },
+  {
+    "id": "/api/employees",
+    "httpMethod": "GET",
+    "javaEntityClass": "com.hr.mis.entity.Employee",
+    "tableName": "employees",
+    "entityFields": {
+      "id": {},
+      "firstName": {
+        "name": "first_name",
+        "length": 500
+      },
+      "lastName": {
+        "name": "last_name",
+        "length": 150
+      },
+      "email": {
+        "name": "email",
+        "length": 254
       },
       "position": {
         "name": "position",
