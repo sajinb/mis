@@ -5,47 +5,38 @@
     "tableName": "employees",
     "entityFields": {
       "id": {
-        "columnName": "id",
-        "attributes": {}
+        "name": "id"
       },
       "firstName": {
-        "columnName": "first_name",
-        "attributes": {
-          "length": 150,
-          "nullable": false
-        }
+        "name": "first_name",
+        "nullable": false,
+        "length": 150
       },
       "lastName": {
-        "columnName": "last_name",
-        "attributes": {
-          "length": 150,
-          "nullable": false
-        }
+        "name": "last_name",
+        "nullable": false,
+        "length": 150
       },
       "email": {
-        "columnName": "email",
-        "attributes": {
-          "length": 254,
-          "nullable": false,
-          "unique": true
-        }
+        "name": "email",
+        "nullable": false,
+        "unique": true,
+        "length": 254
       },
       "position": {
-        "columnName": "position",
-        "attributes": {
-          "length": 200
-        }
+        "name": "position",
+        "nullable": true,
+        "length": 200
       },
       "salary": {
-        "columnName": "salary",
-        "attributes": {
-          "precision": 12,
-          "scale": 2
-        }
+        "name": "salary",
+        "nullable": true,
+        "precision": 12,
+        "scale": 2
       },
       "hiredDate": {
-        "columnName": "hired_date",
-        "attributes": {}
+        "name": "hired_date",
+        "nullable": true
       }
     }
   },
@@ -55,47 +46,38 @@
     "tableName": "employees",
     "entityFields": {
       "id": {
-        "columnName": "id",
-        "attributes": {}
+        "name": "id"
       },
       "firstName": {
-        "columnName": "first_name",
-        "attributes": {
-          "length": 150,
-          "nullable": false
-        }
+        "name": "first_name",
+        "nullable": false,
+        "length": 150
       },
       "lastName": {
-        "columnName": "last_name",
-        "attributes": {
-          "length": 150,
-          "nullable": false
-        }
+        "name": "last_name",
+        "nullable": false,
+        "length": 150
       },
       "email": {
-        "columnName": "email",
-        "attributes": {
-          "length": 254,
-          "nullable": false,
-          "unique": true
-        }
+        "name": "email",
+        "nullable": false,
+        "unique": true,
+        "length": 254
       },
       "position": {
-        "columnName": "position",
-        "attributes": {
-          "length": 200
-        }
+        "name": "position",
+        "nullable": true,
+        "length": 200
       },
       "salary": {
-        "columnName": "salary",
-        "attributes": {
-          "precision": 12,
-          "scale": 2
-        }
+        "name": "salary",
+        "nullable": true,
+        "precision": 12,
+        "scale": 2
       },
       "hiredDate": {
-        "columnName": "hired_date",
-        "attributes": {}
+        "name": "hired_date",
+        "nullable": true
       }
     }
   }
