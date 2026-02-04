@@ -14,7 +14,7 @@
       "firstName": {
         "columnName": "first_name",
         "nullable": false,
-        "length": 150
+        "length": 500
       },
       "lastName": {
         "columnName": "last_name",
@@ -59,7 +59,7 @@
       "firstName": {
         "columnName": "first_name",
         "nullable": false,
-        "length": 150
+        "length": 500
       },
       "lastName": {
         "columnName": "last_name",
