@@ -4,43 +4,34 @@
     "javaEntityClass": "com.hr.mis.entity.Employee",
     "tableName": "employees",
     "entityFields": {
-      "id": {
-        "id": true,
-        "columnName": "id",
-        "generatedValue": {
-          "strategy": "IDENTITY"
-        }
-      },
+      "id": {},
       "firstName": {
-        "columnName": "first_name",
+        "name": "first_name",
         "nullable": false,
         "length": 500
       },
       "lastName": {
-        "columnName": "last_name",
+        "name": "last_name",
         "nullable": false,
         "length": 150
       },
       "email": {
-        "columnName": "email",
+        "name": "email",
         "nullable": false,
-        "unique": true,
-        "length": 254
+        "length": 254,
+        "unique": true
       },
       "position": {
-        "columnName": "position",
-        "nullable": true,
+        "name": "position",
         "length": 200
       },
       "salary": {
-        "columnName": "salary",
-        "nullable": true,
+        "name": "salary",
         "precision": 12,
         "scale": 2
       },
       "hiredDate": {
-        "columnName": "hired_date",
-        "nullable": true
+        "name": "hired_date"
       }
     }
   },
@@ -49,43 +40,34 @@
     "javaEntityClass": "com.hr.mis.entity.Employee",
     "tableName": "employees",
     "entityFields": {
-      "id": {
-        "id": true,
-        "columnName": "id",
-        "generatedValue": {
-          "strategy": "IDENTITY"
-        }
-      },
+      "id": {},
       "firstName": {
-        "columnName": "first_name",
+        "name": "first_name",
         "nullable": false,
         "length": 500
       },
       "lastName": {
-        "columnName": "last_name",
+        "name": "last_name",
         "nullable": false,
         "length": 150
       },
       "email": {
-        "columnName": "email",
+        "name": "email",
         "nullable": false,
-        "unique": true,
-        "length": 254
+        "length": 254,
+        "unique": true
       },
       "position": {
-        "columnName": "position",
-        "nullable": true,
+        "name": "position",
         "length": 200
       },
       "salary": {
-        "columnName": "salary",
-        "nullable": true,
+        "name": "salary",
         "precision": 12,
         "scale": 2
       },
       "hiredDate": {
-        "columnName": "hired_date",
-        "nullable": true
+        "name": "hired_date"
       }
     }
   }
