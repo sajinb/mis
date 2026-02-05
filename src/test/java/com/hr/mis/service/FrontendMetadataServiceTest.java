@@ -1,6 +1,7 @@
 package com.hr.mis.service;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.web.client.RestClient;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,7 +9,7 @@ public class FrontendMetadataServiceTest {
 
     @Test
     public void testFetchUiMetadata() {
-        FrontendMetadataService service = new FrontendMetadataService();
+        FrontendMetadataService service = new FrontendMetadataService(RestClient.builder());
         
         String metadata = service.fetchUiMetadata();
         
