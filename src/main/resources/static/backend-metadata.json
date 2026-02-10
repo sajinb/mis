@@ -1,6 +1,7 @@
 [
   {
     "id": "/api/employees",
+    "httpMethod": "POST",
     "javaEntityClass": "com.hr.mis.entity.Employee",
     "tableName": "employees",
     "entityFields": {
@@ -49,6 +50,7 @@
   },
   {
     "id": "/api/employees/{id}",
+    "httpMethod": "PUT",
     "javaEntityClass": "com.hr.mis.entity.Employee",
     "tableName": "employees",
     "entityFields": {
@@ -94,5 +96,12 @@
         "nullable": true
       }
     }
+  },
+  {
+    "id": "/api/employees",
+    "httpMethod": "GET",
+    "javaEntityClass": "com.hr.mis.entity.Employee",
+    "tableName": "employees",
+    "entityFields": {}
   }
 ]
