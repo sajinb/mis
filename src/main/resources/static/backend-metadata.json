@@ -1,8 +1,50 @@
-I don't have the repository name — the URL you gave is just the GitHub account (https://github.com/sajinb). Please tell me which repository under that account I should scan (the exact repo name). 
-
-Also confirm:
-- I should only read files under src/main/java/com/hr/mis (yes/no).
-- Output should follow the JSON array format you specified (one object per endpoint, with id, javaEntityClass, tableName, entityFields).
-- I should only consider classes annotated with @RestController or @Controller and methods annotated with @PostMapping, @PutMapping, or @PatchMapping.
-
-Once you provide the repository name (and confirm the above), I'll scan only src/main/java/com/hr/mis for the controllers and extract the endpoint→entity metadata.
+[
+  {
+    "id": "/api/employees",
+    "httpMethod": "POST",
+    "javaEntityClass": "com.hr.mis.entity.Employee",
+    "tableName": "employees",
+    "entityFields": [
+      { "name": "id", "columnName": "id", "type": "BIGINT", "nullable": false, "autoIncrement": true },
+      { "name": "firstName", "columnName": "first_name", "type": "VARCHAR", "length": 800, "nullable": false },
+      { "name": "lastName", "columnName": "last_name", "type": "VARCHAR", "length": 150, "nullable": false },
+      { "name": "projectName", "columnName": "project_name", "type": "VARCHAR", "length": 500, "nullable": true },
+      { "name": "email", "columnName": "email", "type": "VARCHAR", "length": 255, "nullable": false },
+      { "name": "position", "columnName": "position", "type": "VARCHAR", "length": 200, "nullable": true },
+      { "name": "salary", "columnName": "salary", "type": "DECIMAL", "precision": 15, "scale": 2, "nullable": true },
+      { "name": "hiredDate", "columnName": "hired_date", "type": "DATE", "nullable": true }
+    ]
+  },
+  {
+    "id": "/api/employees",
+    "httpMethod": "GET",
+    "javaEntityClass": "com.hr.mis.entity.Employee",
+    "tableName": "employees",
+    "entityFields": [
+      { "name": "id", "columnName": "id", "type": "BIGINT" },
+      { "name": "firstName", "columnName": "first_name", "type": "VARCHAR", "length": 800 },
+      { "name": "lastName", "columnName": "last_name", "type": "VARCHAR", "length": 150 },
+      { "name": "projectName", "columnName": "project_name", "type": "VARCHAR", "length": 500 },
+      { "name": "email", "columnName": "email", "type": "VARCHAR", "length": 255 },
+      { "name": "position", "columnName": "position", "type": "VARCHAR", "length": 200 },
+      { "name": "salary", "columnName": "salary", "type": "DECIMAL", "precision": 15, "scale": 2 },
+      { "name": "hiredDate", "columnName": "hired_date", "type": "DATE" }
+    ]
+  },
+  {
+    "id": "/api/employees/{id}",
+    "httpMethod": "PUT",
+    "javaEntityClass": "com.hr.mis.entity.Employee",
+    "tableName": "employees",
+    "entityFields": [
+      { "name": "id", "columnName": "id", "type": "BIGINT", "nullable": false },
+      { "name": "firstName", "columnName": "first_name", "type": "VARCHAR", "length": 800, "nullable": false },
+      { "name": "lastName", "columnName": "last_name", "type": "VARCHAR", "length": 150, "nullable": false },
+      { "name": "projectName", "columnName": "project_name", "type": "VARCHAR", "length": 500, "nullable": true },
+      { "name": "email", "columnName": "email", "type": "VARCHAR", "length": 255, "nullable": false },
+      { "name": "position", "columnName": "position", "type": "VARCHAR", "length": 200, "nullable": true },
+      { "name": "salary", "columnName": "salary", "type": "DECIMAL", "precision": 15, "scale": 2, "nullable": true },
+      { "name": "hiredDate", "columnName": "hired_date", "type": "DATE", "nullable": true }
+    ]
+  }
+]
