@@ -1,147 +1,73 @@
 [
   {
     "id": "/api/employees",
-    "httpMethod": "POST",
     "javaEntityClass": "com.hr.mis.entity.Employee",
     "tableName": "employees",
     "entityFields": {
-      "id": {
-        "type": "Long",
-        "columnName": "id",
-        "primaryKey": true,
-        "generated": {
-          "strategy": "GenerationType.IDENTITY"
-        },
-        "nullable": false
-      },
+      "id": {},
       "firstName": {
-        "type": "String",
-        "columnName": "first_name",
+        "name": "first_name",
         "nullable": false,
-        "length": 900,
-        "validations": [
-          "NotBlank",
-          "Size(max=900)"
-        ]
+        "length": 900
       },
       "lastName": {
-        "type": "String",
-        "columnName": "last_name",
+        "name": "last_name",
         "nullable": false,
-        "length": 150,
-        "validations": [
-          "NotBlank",
-          "Size(max=150)"
-        ]
+        "length": 150
       },
       "email": {
-        "type": "String",
-        "columnName": "email",
+        "name": "email",
         "nullable": false,
         "unique": true,
-        "length": 254,
-        "validations": [
-          "Email",
-          "NotBlank",
-          "Size(max=254)"
-        ]
+        "length": 254
       },
       "position": {
-        "type": "String",
-        "columnName": "position",
-        "nullable": true,
-        "length": 200,
-        "validations": [
-          "Size(max=200)"
-        ]
+        "name": "position",
+        "length": 200
       },
       "salary": {
-        "type": "BigDecimal",
-        "columnName": "salary",
-        "nullable": true,
+        "name": "salary",
         "precision": 12,
-        "scale": 2,
-        "validations": [
-          "PositiveOrZero"
-        ]
+        "scale": 2
       },
       "hiredDate": {
-        "type": "LocalDate",
-        "columnName": "hired_date",
-        "nullable": true
+        "name": "hired_date"
       }
     }
   },
   {
     "id": "/api/employees/{id}",
-    "httpMethod": "PUT",
     "javaEntityClass": "com.hr.mis.entity.Employee",
     "tableName": "employees",
     "entityFields": {
-      "id": {
-        "type": "Long",
-        "columnName": "id",
-        "primaryKey": true,
-        "generated": {
-          "strategy": "GenerationType.IDENTITY"
-        },
-        "nullable": false
-      },
+      "id": {},
       "firstName": {
-        "type": "String",
-        "columnName": "first_name",
+        "name": "first_name",
         "nullable": false,
-        "length": 900,
-        "validations": [
-          "NotBlank",
-          "Size(max=900)"
-        ]
+        "length": 900
       },
       "lastName": {
-        "type": "String",
-        "columnName": "last_name",
+        "name": "last_name",
         "nullable": false,
-        "length": 150,
-        "validations": [
-          "NotBlank",
-          "Size(max=150)"
-        ]
+        "length": 150
       },
       "email": {
-        "type": "String",
-        "columnName": "email",
+        "name": "email",
         "nullable": false,
         "unique": true,
-        "length": 254,
-        "validations": [
-          "Email",
-          "NotBlank",
-          "Size(max=254)"
-        ]
+        "length": 254
       },
       "position": {
-        "type": "String",
-        "columnName": "position",
-        "nullable": true,
-        "length": 200,
-        "validations": [
-          "Size(max=200)"
-        ]
+        "name": "position",
+        "length": 200
       },
       "salary": {
-        "type": "BigDecimal",
-        "columnName": "salary",
-        "nullable": true,
+        "name": "salary",
         "precision": 12,
-        "scale": 2,
-        "validations": [
-          "PositiveOrZero"
-        ]
+        "scale": 2
       },
       "hiredDate": {
-        "type": "LocalDate",
-        "columnName": "hired_date",
-        "nullable": true
+        "name": "hired_date"
       }
     }
   }
