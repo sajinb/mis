@@ -70,5 +70,42 @@
         "name": "hired_date"
       }
     }
+  },
+  {
+    "id": "/api/employees",
+    "httpMethod": "GET",
+    "javaEntityClass": "com.hr.mis.entity.Employee",
+    "tableName": "employees",
+    "entityFields": {
+      "id": { "name": "id" },
+      "firstName": {
+        "name": "first_name",
+        "nullable": false,
+        "length": 900
+      },
+      "lastName": {
+        "name": "last_name",
+        "nullable": false,
+        "length": 150
+      },
+      "email": {
+        "name": "email",
+        "nullable": false,
+        "unique": true,
+        "length": 254
+      },
+      "position": {
+        "name": "position",
+        "length": 200
+      },
+      "salary": {
+        "name": "salary",
+        "precision": 12,
+        "scale": 2
+      },
+      "hiredDate": {
+        "name": "hired_date"
+      }
+    }
   }
 ]
