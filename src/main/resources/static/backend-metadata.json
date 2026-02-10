@@ -1,74 +1,84 @@
+I only read the Java files under /src/main/java/com/hr/mis/entity (per your instruction). I found one JPA entity (Employee). I could not read controllers or services (you restricted the scan to the entity folder), so I could not discover any REST endpoints to map to entities. Because no controller methods were inspected, endpoint -> entity mappings cannot be established.
+
+Below I provide the requested entity metadata extracted from com.hr.mis.entity.Employee. In the mapping object the "id" field is null to indicate no endpoint was discovered (no controllers were scanned). If you want endpoint mappings, allow me to read the controller(s) (for example /src/main/java/com/hr/mis/controller or the whole project) and I will immediately extract and return the endpoint -> entity mapping.
+
+Output (JSON array):
+
 [
   {
-    "id": "/api/employees",
+    "id": null,
     "javaEntityClass": "com.hr.mis.entity.Employee",
     "tableName": "employees",
     "entityFields": {
-      "id": {},
+      "id": {
+        "type": "Long",
+        "columnName": "id",
+        "primaryKey": true,
+        "generated": {
+          "strategy": "GenerationType.IDENTITY"
+        },
+        "nullable": false
+      },
       "firstName": {
+        "type": "String",
         "columnName": "first_name",
         "nullable": false,
-        "length": 700
+        "length": 700,
+        "validations": [
+          "NotBlank",
+          "Size(max=700)"
+        ]
       },
       "lastName": {
+        "type": "String",
         "columnName": "last_name",
         "nullable": false,
-        "length": 150
+        "length": 150,
+        "validations": [
+          "NotBlank",
+          "Size(max=150)"
+        ]
       },
       "email": {
+        "type": "String",
         "columnName": "email",
         "nullable": false,
         "unique": true,
-        "length": 254
+        "length": 254,
+        "validations": [
+          "Email",
+          "NotBlank",
+          "Size(max=254)"
+        ]
       },
       "position": {
+        "type": "String",
         "columnName": "position",
-        "length": 200
+        "nullable": true,
+        "length": 200,
+        "validations": [
+          "Size(max=200)"
+        ]
       },
       "salary": {
+        "type": "BigDecimal",
         "columnName": "salary",
+        "nullable": true,
         "precision": 12,
-        "scale": 2
+        "scale": 2,
+        "validations": [
+          "PositiveOrZero"
+        ]
       },
       "hiredDate": {
-        "columnName": "hired_date"
-      }
-    }
-  },
-  {
-    "id": "/api/employees/{id}",
-    "javaEntityClass": "com.hr.mis.entity.Employee",
-    "tableName": "employees",
-    "entityFields": {
-      "id": {},
-      "firstName": {
-        "columnName": "first_name",
-        "nullable": false,
-        "length": 700
-      },
-      "lastName": {
-        "columnName": "last_name",
-        "nullable": false,
-        "length": 150
-      },
-      "email": {
-        "columnName": "email",
-        "nullable": false,
-        "unique": true,
-        "length": 254
-      },
-      "position": {
-        "columnName": "position",
-        "length": 200
-      },
-      "salary": {
-        "columnName": "salary",
-        "precision": 12,
-        "scale": 2
-      },
-      "hiredDate": {
-        "columnName": "hired_date"
+        "type": "LocalDate",
+        "columnName": "hired_date",
+        "nullable": true
       }
     }
   }
 ]
+
+Next steps I can take if you want:
+- If you permit reading controller and service packages (or the full project), I will scan controllers for @RestController/@Controller and extract all @PostMapping/@PutMapping/@PatchMapping endpoints, trace them to service/repository calls, and return a JSON mapping where each endpoint id is the normalized API path and the javaEntityClass/tableName/entityFields are filled in as above.
+- Or you can point me to specific controller file(s) to analyze.
