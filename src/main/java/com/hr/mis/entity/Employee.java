@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.*;
+
 @Entity
 @Table(name = "employees")
 public class Employee {
@@ -12,18 +14,27 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(max = 800)
     @Column(name = "first_name", length = 800, nullable = false)
     private String firstName;
 
+    @NotBlank
+    @Size(max = 150)
     @Column(name = "last_name", length = 150, nullable = false)
     private String lastName;
 
+    @Size(max = 500)
     @Column(name = "project_name", length = 500)
     private String projectName;
 
+    @NotBlank
+    @Email
+    @Size(max = 255)
     @Column(name = "email", length = 255, nullable = false)
     private String email;
 
+    @Size(max = 200)
     @Column(name = "position", length = 200)
     private String position;
 
