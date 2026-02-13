@@ -1,3 +1,6 @@
+To update the `Employee` entity class with the new fields provided, we need to add the `address` and `primarySkills` fields, and update the `lastName` field's maximum length. Here's the updated code:
+
+
 package com.hr.mis.entity;
 
 import javax.persistence.*;
@@ -20,8 +23,8 @@ public class Employee {
     private String firstName;
 
     @NotBlank
-    @Size(max = 150)
-    @Column(name = "last_name", length = 150, nullable = false)
+    @Size(max = 300) // Updated max length
+    @Column(name = "last_name", length = 300, nullable = false)
     private String lastName;
 
     @Size(max = 500)
@@ -37,6 +40,14 @@ public class Employee {
     @Size(max = 200)
     @Column(name = "position", length = 200)
     private String position;
+
+    @Size(max = 400)
+    @Column(name = "address", length = 400)
+    private String address; // New field
+
+    @Size(max = 500)
+    @Column(name = "primary_skills", length = 500)
+    private String primarySkills; // New field
 
     @Column(name = "salary", precision = 15, scale = 2)
     private BigDecimal salary;
@@ -95,6 +106,22 @@ public class Employee {
         this.position = position;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPrimarySkills() {
+        return primarySkills;
+    }
+
+    public void setPrimarySkills(String primarySkills) {
+        this.primarySkills = primarySkills;
+    }
+
     public BigDecimal getSalary() {
         return salary;
     }
@@ -111,3 +138,6 @@ public class Employee {
         this.hiredDate = hiredDate;
     }
 }
+
+
+In this updated code, the `lastName` field's maximum length has been changed to 300, and two new fields, `address` and `primarySkills`, have been added with their respective constraints.
