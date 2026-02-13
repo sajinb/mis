@@ -34,8 +34,11 @@ public class EmployeeController {
                 .map(existing -> {
                     existing.setFirstName(updated.getFirstName());
                     existing.setLastName(updated.getLastName());
+                    existing.setProjectName(updated.getProjectName());
                     existing.setEmail(updated.getEmail());
                     existing.setPosition(updated.getPosition());
+                    existing.setAddress(updated.getAddress());
+                    existing.setPrimarySkills(updated.getPrimarySkills());
                     existing.setSalary(updated.getSalary());
                     existing.setHiredDate(updated.getHiredDate());
                     Employee saved = repository.save(existing);
