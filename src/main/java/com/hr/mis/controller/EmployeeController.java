@@ -38,6 +38,10 @@ public class EmployeeController {
                     existing.setPosition(updated.getPosition());
                     existing.setSalary(updated.getSalary());
                     existing.setHiredDate(updated.getHiredDate());
+                    // New fields
+                    existing.setProjectName(updated.getProjectName());
+                    existing.setAddress(updated.getAddress());
+                    existing.setPrimarySkills(updated.getPrimarySkills());
                     Employee saved = repository.save(existing);
                     return ResponseEntity.ok(saved);
                 })
@@ -56,3 +60,6 @@ public class EmployeeController {
         return repository.findAll();
     }
 }
+
+
+In this updated code, I've added setter calls for the new fields `projectName`, `address`, and `primarySkills` in the `updateEmployee` method. This ensures that these fields are updated in the database when an employee is updated. The assumption is that the `Employee` entity class has corresponding fields and setter methods for these new attributes.
