@@ -20,8 +20,8 @@ public class Employee {
     private String firstName;
 
     @NotBlank
-    @Size(max = 150)
-    @Column(name = "last_name", length = 150, nullable = false)
+    @Size(max = 300)
+    @Column(name = "last_name", length = 300, nullable = false)
     private String lastName;
 
     @Size(max = 500)
@@ -37,6 +37,14 @@ public class Employee {
     @Size(max = 200)
     @Column(name = "position", length = 200)
     private String position;
+
+    @Size(max = 400)
+    @Column(name = "address", length = 400)
+    private String address;
+
+    @Size(max = 500)
+    @Column(name = "primary_skills", length = 500)
+    private String primarySkills;
 
     @Column(name = "salary", precision = 15, scale = 2)
     private BigDecimal salary;
@@ -93,6 +101,22 @@ public class Employee {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPrimarySkills() {
+        return primarySkills;
+    }
+
+    public void setPrimarySkills(String primarySkills) {
+        this.primarySkills = primarySkills;
     }
 
     public BigDecimal getSalary() {
