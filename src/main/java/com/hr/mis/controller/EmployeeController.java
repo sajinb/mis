@@ -38,6 +38,9 @@ public class EmployeeController {
                     existing.setPosition(updated.getPosition());
                     existing.setSalary(updated.getSalary());
                     existing.setHiredDate(updated.getHiredDate());
+                    existing.setProjectName(updated.getProjectName());
+                    existing.setAddress(updated.getAddress());
+                    existing.setPrimarySkills(updated.getPrimarySkills());
                     Employee saved = repository.save(existing);
                     return ResponseEntity.ok(saved);
                 })

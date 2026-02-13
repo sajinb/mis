@@ -1,3 +1,6 @@
+To update the `Employee` entity class with the new UI fields, we need to add the new fields with the appropriate JPA annotations and generate getters and setters for them. Here's the updated code:
+
+
 package com.hr.mis.entity;
 
 import javax.persistence.*;
@@ -43,6 +46,15 @@ public class Employee {
 
     @Column(name = "hired_date")
     private LocalDate hiredDate;
+
+    // New fields
+    @Size(max = 400)
+    @Column(name = "address", length = 400)
+    private String address;
+
+    @Size(max = 500)
+    @Column(name = "primary_skills", length = 500)
+    private String primarySkills;
 
     public Employee() {
     }
@@ -110,4 +122,26 @@ public class Employee {
     public void setHiredDate(LocalDate hiredDate) {
         this.hiredDate = hiredDate;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPrimarySkills() {
+        return primarySkills;
+    }
+
+    public void setPrimarySkills(String primarySkills) {
+        this.primarySkills = primarySkills;
+    }
 }
+
+
+### Changes Made:
+1. Added a new field `address` with a maximum length of 400 characters.
+2. Added a new field `primarySkills` with a maximum length of 500 characters.
+3. Generated getters and setters for the new fields.
