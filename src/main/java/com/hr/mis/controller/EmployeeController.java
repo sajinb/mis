@@ -38,6 +38,8 @@ public class EmployeeController {
                     existing.setPosition(updated.getPosition());
                     existing.setSalary(updated.getSalary());
                     existing.setHiredDate(updated.getHiredDate());
+                    existing.setProjectName(updated.getProjectName()); // New field
+                    existing.setAddress(updated.getAddress()); // New field
                     Employee saved = repository.save(existing);
                     return ResponseEntity.ok(saved);
                 })
