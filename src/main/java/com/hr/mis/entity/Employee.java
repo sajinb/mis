@@ -38,6 +38,10 @@ public class Employee {
     @Column(name = "position", length = 200)
     private String position;
 
+    @Size(max = 300)
+    @Column(name = "address", length = 300)
+    private String address;
+
     @Column(name = "salary", precision = 15, scale = 2)
     private BigDecimal salary;
 
@@ -93,6 +97,14 @@ public class Employee {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public BigDecimal getSalary() {
