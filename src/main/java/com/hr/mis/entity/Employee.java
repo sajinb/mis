@@ -15,8 +15,8 @@ public class Employee {
     private Long id;
 
     @NotBlank
-    @Size(max = 800)
-    @Column(name = "first_name", length = 800, nullable = false)
+    @Size(max = 450) // Updated max length to 450
+    @Column(name = "first_name", length = 450, nullable = false) // Updated column length to 450
     private String firstName;
 
     @NotBlank
@@ -30,7 +30,7 @@ public class Employee {
 
     @NotBlank
     @Email
-    @Size(max = 255)
+    @Size(max = 255) // Retained the existing max length for email
     @Column(name = "email", length = 255, nullable = false)
     private String email;
 
