@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:batch="http://www.springframework.org/schema/batch"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/batch
+           http://www.springframework.org/schema/batch/spring-batch.xsd">
+
+    <!-- Employee Data Sync Job -->
+    <batch:job id="employeeSyncJob">
+        <batch:step id="extractEmployees" next="loadEmployees">
+            <batch:tasklet>
+                <batch:chunk reader="employeeCsvReader"
+                             processor="employeeTransformProcessor"
+                             writer="employeeDbWriter"
+                             commit-interval="200"
+                             skip-limit="20">
+                    <batch:skippable-exception-classes>
+                        <batch:include class="org.springframework.batch.item.ParseException"/>
+                        <batch:include class="com.example.exceptions.DataValidationException"/>
+                    </batch:skippable-exception-classes>
+                </batch:chunk>
+            </batch:tasklet>
+            <batch:listeners>
+                <batch:listener ref="stepExecutionListener"/>
+            </batch:listeners>
+        </batch:step>
+
+        <batch:step id="loadEmployees">
+            <batch:tasklet ref="employeeReportTasklet"/>
+        </batch:step>
+
+        <batch:listeners>
+            <batch:listener ref="jobCompletionListener"/>
+        </batch:listeners>
+    </batch:job>
+
+    <!-- Invoice Generation Job -->
+    <batch:job id="invoiceGenerationJob">
+        <batch:step id="generateInvoices">
+            <batch:tasklet>
+                <batch:chunk reader="orderDbReader"
+                             processor="invoiceProcessor"
+                             writer="invoicePdfWriter"
+                             commit-interval="50"
+                             retry-limit="3">
+                    <batch:retryable-exception-classes>
+                        <batch:include class="java.io.IOException"/>
+                    </batch:retryable-exception-classes>
+                </batch:chunk>
+            </batch:tasklet>
+        </batch:step>
+    </batch:job>
+
+    <!-- Bean Definitions -->
+    <bean id="employeeCsvReader"
+          class="org.springframework.batch.item.file.FlatFileItemReader">
+        <property name="resource" value="classpath:input/employees.csv"/>
+        <property name="lineMapper" ref="employeeLineMapper"/>
+    </bean>
+
+    <bean id="employeeTransformProcessor"
+          class="com.example.batch.processor.EmployeeTransformProcessor">
+        <property name="validationService" ref="employeeValidationService"/>
+    </bean>
+
+    <bean id="employeeDbWriter"
+          class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql" value="INSERT INTO employees (emp_id, name, dept, salary) VALUES (:empId, :name, :dept, :salary)"/>
+    </bean>
+
+    <bean id="orderDbReader"
+          class="org.springframework.batch.item.database.JdbcCursorItemReader">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql" value="SELECT * FROM orders WHERE invoice_status = 'PENDING'"/>
+    </bean>
+
+    <bean id="invoiceProcessor"
+          class="com.example.batch.processor.InvoiceProcessor">
+        <property name="pricingService" ref="pricingService"/>
+        <property name="taxService" ref="taxService"/>
+    </bean>
+
+    <bean id="invoicePdfWriter"
+          class="com.example.batch.writer.InvoicePdfWriter">
+        <property name="outputDirectory" value="/output/invoices/"/>
+        <property name="templateEngine" ref="templateEngine"/>
+    </bean>
+
+    <bean id="employeeReportTasklet"
+          class="com.example.batch.tasklet.EmployeeReportTasklet">
+        <property name="reportService" ref="reportService"/>
+    </bean>
+
+    <bean id="jobCompletionListener"
+          class="com.example.batch.listener.JobCompletionNotificationListener"/>
+
+    <bean id="stepExecutionListener"
+          class="com.example.batch.listener.StepExecutionNotificationListener"/>
+
+</beans>
