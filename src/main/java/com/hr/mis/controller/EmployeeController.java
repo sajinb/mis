@@ -1,58 +1,43 @@
 package com.hr.mis.controller;
 
-import com.hr.mis.entity.Employee;
-import com.hr.mis.repo.EmployeeRepository;
+import com.hr.mis.dto.EmployeeDto;
+import com.hr.mis.dto.EmployeeRequest;
+import com.hr.mis.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/employees")
-@Validated
 public class EmployeeController {
 
-    private final EmployeeRepository repository;
+    private final EmployeeService employeeService;
 
-    public EmployeeController(EmployeeRepository repository) {
-        this.repository = repository;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @PostMapping
-    public ResponseEntity<Employee> createEmployee(@Valid @RequestBody Employee employee) {
-        Employee saved = repository.save(employee);
-        return new ResponseEntity<>(saved, HttpStatus.CREATED);
+    public ResponseEntity<EmployeeDto> create(@Valid @RequestBody EmployeeRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(employeeService.create(request));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @Valid @RequestBody Employee updated) {
-        return repository.findById(id)
-                .map(existing -> {
-                    existing.setFirstName(updated.getFirstName());
-                    existing.setLastName(updated.getLastName());
-                    existing.setEmail(updated.getEmail());
-                    existing.setPosition(updated.getPosition());
-                    existing.setSalary(updated.getSalary());
-                    existing.setHiredDate(updated.getHiredDate());
-                    Employee saved = repository.save(existing);
-                    return ResponseEntity.ok(saved);
-                })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
+    public ResponseEntity<EmployeeDto> update(@PathVariable Long id,
+                                              @Valid @RequestBody EmployeeRequest request) {
+        return ResponseEntity.ok(employeeService.update(id, request));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Employee> getEmployee(@PathVariable Long id) {
-        return repository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
+    public ResponseEntity<EmployeeDto> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(employeeService.findById(id));
     }
 
     @GetMapping
-    public List<Employee> listEmployees() {
-        return repository.findAll();
+    public ResponseEntity<List<EmployeeDto>> findAll() {
+        return ResponseEntity.ok(employeeService.findAll());
     }
 }
